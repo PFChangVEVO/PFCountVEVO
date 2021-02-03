@@ -1,1 +1,1 @@
-worker: bot/botGoWeee.py
+worker: python bot/botGoWeee.py
