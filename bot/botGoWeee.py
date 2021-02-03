@@ -1,4 +1,7 @@
 import discord
+import os
+
+TOKEN = os.getenv("DISCORD_TOKEN")
 client = discord.Client()
 largest = ("",0)
 
@@ -16,19 +19,16 @@ async def on_ready():
         except:
             pass
     print(largest)
-    game = discord.Game("with numbers")
-    await client.change_presence(activity=discord.CustomActivity("counting the things for you naughty children"))
-
 
 @client.event
 async def on_message(message):
     global largest
 
     if message.author == client.user:
-        print("deleted becaust author matches client user")
+        print("ignored because author matches client user")
         return
     if message.channel.name != "🧮-counting":
-        print("deleted because it's in the wrong channel.")
+        print("ignored because it's not in counting channel.")
         return 
     try:
         print("we got in the try")
@@ -48,5 +48,5 @@ async def grab_channel(channel_name):
 
 #needed perms: manage messages, read message history
 
-client.run('NzQ4MzM5MTY2MjQ0NTAzNjMy.X0b_KA.R9OLxlUBHyw58hfkar2DUJ1GhvE')
+client.run(TOKEN)
 
