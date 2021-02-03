@@ -27,7 +27,7 @@ async def on_message(message):
     if message.author == client.user:
         print("ignored because author matches client user")
         return
-    if message.channel.name != "🧮-counting":
+    if message.channel.name != "🧮-counting": # <--- If you use this code then change this channel name to whatever channel you want the bot to count in
         print("ignored because it's not in counting channel.")
         return 
     try:
@@ -40,13 +40,10 @@ async def on_message(message):
             await message.delete()
     print(largest)
 
-
 async def grab_channel(channel_name):
     for channel in client.get_all_channels():
         if channel.name == channel_name:
             return channel
-
-#needed perms: manage messages, read message history
 
 client.run(TOKEN)
 
